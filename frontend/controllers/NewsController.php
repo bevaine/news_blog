@@ -65,8 +65,19 @@ class NewsController extends Controller
     {
         $model = new NewsBlog();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            if (!$model->validate()) { //todo валидация данных
+
+                Yii::$app->session->setFlash('alert', [
+                    'options'=>['class'=>'alert-danger'],
+                    'body'=>Yii::t('backend', 'Не удалось добавить новость!')
+                ]);
+            }
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
+
         } else {
             return $this->render('create', [
                 'model' => $model,

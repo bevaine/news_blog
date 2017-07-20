@@ -33,11 +33,11 @@ class NewsBlog extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'integer'],
-            [['title', 'content'], 'required'],
-            [['publiched_at'], 'safe'],
+            [['title', 'content', 'publiched_at', 'user_id'], 'required'],
+            //[['publiched_at'], 'safe'],
             [['title', 'content'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            ['publiched_at', 'default', 'value' => new Expression('NOW()')],
+            //['publiched_at', 'default', 'value' => new Expression('NOW()')],
             ['user_id', 'default', 'value' => Yii::$app->user->id],
         ];
     }

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\NewsBlog */
@@ -12,11 +13,22 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-<!--    --><?//= $form->field($model, 'user_id')->textInput() ?>
+    <p>
+        <label>Дата публикации:</label><br>
+        <?php echo DatePicker::widget([
+            'name' => 'publiched_at',
+            'model' => $model,
+            'attribute' => 'publiched_at',
+            'dateFormat' => 'dd.MM.yyyy',
+        ]);
+        ?>
+    </p>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'content')->textarea(['maxlength' => true, 'rows' => 15]) ?>
+
+
 
 <!--    --><?//= $form->field($model, 'publiched_at')->textInput() ?>
 
