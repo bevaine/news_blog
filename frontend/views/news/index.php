@@ -8,11 +8,8 @@ use yii\bootstrap\Carousel;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Новостной Блог';
+$this->title = 'Новости';
 $this->params['breadcrumbs'][] = $this->title;
-
-$template = '{view}';
-if (!Yii::$app->user->isGuest) $template .= "{update}";
 ?>
 
 <div class="news-blog-index">
@@ -23,18 +20,19 @@ if (!Yii::$app->user->isGuest) $template .= "{update}";
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute' => "user_id",
-                'value' => function($model) { return $model->user->username; },
-                'header' => "Имя"
-            ],
-            'title',
+            //'id',
             'publiched_at',
             [
+                'attribute' => 'user_id',
+                'value' => function($model) {return $model->user->username;}
+
+            ],
+            'title',
+            'content',
+            [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => $template
+                'template' => '{view}'
             ],
         ],
-    ]);
-    ?>
+    ]); ?>
 </div>

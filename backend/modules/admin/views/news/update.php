@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\NewsBlog */
 
-$this->title = 'Update News Blog: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'News Blogs', 'url' => ['index']];
+$this->title = 'Новостной блог: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="news-blog-update">
 

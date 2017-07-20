@@ -7,6 +7,7 @@ $params = array_merge(
 );
 
 return [
+    'language' => 'ru-RU',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -14,7 +15,26 @@ return [
     'modules' => [
         'admin' => [
             'class' => 'backend\modules\admin\Module',
-            // ... другие настройки модуля ...
+        ],
+        'datecontrol' => [
+            'class' => 'kartik\datecontrol\Module',
+
+            // format settings for displaying each date attribute
+            'displaySettings' => [
+                'date' => 'dd.MM.yyyy',
+                'time' => 'hh:mm:ss a',
+                'datetime' => 'dd-MM-yyyy hh:mm:ss a',
+            ],
+
+            // format settings for saving each date attribute
+            'saveSettings' => [
+                'date' => 'dd.MM.yyyy',
+                'time' => 'php:H:i:s',
+                'datetime' => 'dd/MM/yyyy HH:mm',
+            ],
+
+            // automatically use kartik\widgets for each of the above formats
+            'autoWidget' => true,
         ],
     ],
     'components' => [

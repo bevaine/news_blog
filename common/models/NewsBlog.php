@@ -33,11 +33,9 @@ class NewsBlog extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'integer'],
-            [['title', 'content', 'publiched_at', 'user_id'], 'required'],
-            //[['publiched_at'], 'safe'],
+            [['title', 'content', 'publiched_at'], 'required'],
             [['title', 'content'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            //['publiched_at', 'default', 'value' => new Expression('NOW()')],
             ['user_id', 'default', 'value' => Yii::$app->user->id],
         ];
     }
@@ -49,7 +47,7 @@ class NewsBlog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            'user_id' => 'Создатель',
             'title' => 'Заголовок',
             'content' => 'Новость',
             'publiched_at' => 'Дата',

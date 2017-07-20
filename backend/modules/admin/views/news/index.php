@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'News Blogs';
+$this->title = 'Новости';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-blog-index">
@@ -14,19 +14,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create News Blog', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            //'id',
+            'publiched_at',
+            [
+                'attribute' => 'user_id',
+                'value' => function($model) {return $model->user->username;}
 
-            'id',
-            'user_id',
+            ],
             'title',
             'content',
-            'publiched_at',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

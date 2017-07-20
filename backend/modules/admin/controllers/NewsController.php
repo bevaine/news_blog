@@ -65,13 +65,19 @@ class NewsController extends Controller
     {
         $model = new NewsBlog();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            //todo валидация данных
+            if ($model->validate()) {
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+
     }
 
     /**
